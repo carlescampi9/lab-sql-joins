@@ -1,13 +1,13 @@
 USE sakila;
 
 -- 1. List the number of films per category.
-SELECT ca.name, f.title
+SELECT ca.name, COUNT(f.title) AS films_number
 FROM sakila.film AS f
 JOIN sakila.film_category as c
 ON f.film_id = c.film_id
 JOIN sakila.category AS ca
 ON c.category_id = ca.category_id
-ORDER BY ca.name;
+GROUP BY ca.name;
 
 -- 2. Retrieve the store ID, city, and country for each store.
 SELECT s.store_id, c.city, co.country
